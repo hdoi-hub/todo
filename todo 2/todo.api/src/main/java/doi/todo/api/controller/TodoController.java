@@ -24,9 +24,11 @@ public class TodoController {
     public ResponseEntity<TodoResponse> findAll(){
         List<TodoEntity> todoEntities = todoService.findAll();
         List<TodoBean> todoBeans = new ArrayList<>();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+
         for (TodoEntity todoEntity : todoEntities) {
             Date deadline = todoEntity.getDeadline();
-            SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
             String strDeadline = sdf.format(deadline);
             TodoBean todoBean = new TodoBean();
 
